@@ -731,7 +731,9 @@ void Plane::apply_load_factor_roll_limits(void)
         ahrs.using_airspeed_sensor() && is_positive(aparm.airspeed_stall);
 
     const float level_roll_limit_deg = g.level_roll_limit;
-    float lf_roll_limit_deg = aparm.roll_limit;
+    // Use whichever ceiling is higher: the global param or what the current mode
+    // wrote into roll_limit_cd (e.g. a per-mode FBWA_ROLL_LIM override).
+    float lf_roll_limit_deg = MAX(aparm.roll_limit.get(), roll_limit_cd * 0.01f);
     if (max_load_factor <= 1) {
         if (enforce_full_roll_limit) {
             lf_roll_limit_deg = level_roll_limit_deg;

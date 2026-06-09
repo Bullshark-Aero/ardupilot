@@ -955,6 +955,10 @@ const AP_Param::Info Plane::var_info[] = {
     GOBJECT(osd, "OSD", AP_OSD),
 #endif
 
+    // @Group: FBWA_
+    // @Path: mode_fbwa.cpp
+    GOBJECT(mode_fbwa, "FBWA_", ModeFBWA),
+
     // @Group: TKOFF_
     // @Path: mode_takeoff.cpp
     GOBJECT(mode_takeoff, "TKOFF_", ModeTakeoff),

@@ -613,27 +613,35 @@ class ModeFBWA : public Mode
 {
 public:
 
+    ModeFBWA();
+
     Number mode_number() const override { return Number::FLY_BY_WIRE_A; }
     const char *name() const override { return "FBWA"; }
     const char *name4() const override { return "FBWA"; }
 
     // methods that affect movement of the vehicle in this mode
     void update() override;
-    
+
     bool mode_allows_autotuning() const override { return true; }
 
     void run() override;
+
+    static const struct AP_Param::GroupInfo var_info[];
 
 #if AP_PLANE_SYSTEMID_ENABLED
     // does this mode support fixed wing systemid?
     bool supports_fw_systemid() const override { return true; }
 #endif
 
-#if MODE_AUTOLAND_ENABLED   
-    // true if mode allows landing direction to be set on first takeoff after arm in this mode 
+#if MODE_AUTOLAND_ENABLED
+    // true if mode allows landing direction to be set on first takeoff after arm in this mode
     bool allows_autoland_direction_capture() const override { return true; }
 #endif
 
+protected:
+    AP_Float roll_limit;   // FBWA roll limit in degrees; 0 = use global ROLL_LIMIT_DEG
+    AP_Float pitch_max;    // FBWA pitch-up limit in degrees; 0 = use global PTCH_LIM_MAX_DEG
+    AP_Float pitch_min;    // FBWA pitch-down limit in degrees (negative); 0 = use global PTCH_LIM_MIN_DEG
 };
 
 class ModeFBWB : public Mode
