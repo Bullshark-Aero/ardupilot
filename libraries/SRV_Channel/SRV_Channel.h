@@ -691,6 +691,7 @@ private:
     } functions[SRV_Channel::k_nr_aux_servo_functions];
 
     AP_Int8 auto_trim;
+    AP_Int8 auto_trim_limit;
     AP_Int16 default_rate;
     AP_Int8 dshot_rate;
     AP_Int8 dshot_esc_type;

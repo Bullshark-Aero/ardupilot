@@ -155,10 +155,19 @@ const AP_Param::GroupInfo SRV_Channels::var_info[] = {
 #ifndef  HAL_BUILD_AP_PERIPH
     // @Param{Plane}: _AUTO_TRIM
     // @DisplayName: Automatic servo trim
-    // @Description: This enables automatic servo trim in flight. Servos will be trimed in stabilized flight modes when the aircraft is close to level. Changes to servo trim will be saved every 10 seconds and will persist between flights. The automatic trim won't go more than 20% away from a centered trim.
+    // @Description: This enables automatic servo trim in flight. Servos will be trimed in stabilized flight modes when the aircraft is close to level. Changes to servo trim will be saved every 10 seconds and will persist between flights. The maximum trim offset from center is controlled by SERVO_ATRIM_MAX.
     // @Values: 0:Disable,1:Enable
     // @User: Advanced
     AP_GROUPINFO_FRAME("_AUTO_TRIM",  17, SRV_Channels, auto_trim, 0, AP_PARAM_FRAME_PLANE),
+
+    // @Param{Plane}: _ATRIM_MAX
+    // @DisplayName: BSA: Automatic servo trim maximum offset
+    // @Description: Maximum auto-trim offset from the servo center, expressed as a percentage of the servo's total range. The default of 10 limits trim to ±10% from center (the default 20% window). Set to 50 to allow the full range.
+    // @Range: 1 50
+    // @Increment: 1
+    // @Units: %
+    // @User: Advanced
+    AP_GROUPINFO_FRAME("_ATRIM_MAX",  45, SRV_Channels, auto_trim_limit, 10, AP_PARAM_FRAME_PLANE),
 #endif
 
     // @Param: _RATE

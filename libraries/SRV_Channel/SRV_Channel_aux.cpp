@@ -726,9 +726,10 @@ void SRV_Channels::adjust_trim(SRV_Channel::Function function, float v)
             continue;
         }
         float trim_scaled = float(c.servo_trim - c.servo_min) / (c.servo_max - c.servo_min);
-        if (change > 0 && trim_scaled < 0.6f) {
+        const float limit = constrain_float(_singleton->auto_trim_limit.get() * 0.01f, 0.0f, 0.5f);
+        if (change > 0 && trim_scaled < 0.5f + limit) {
             new_trim++;
-        } else if (change < 0 && trim_scaled > 0.4f) {
+        } else if (change < 0 && trim_scaled > 0.5f - limit) {
             new_trim--;
         } else {
             continue;
