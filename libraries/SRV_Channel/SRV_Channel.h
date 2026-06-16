@@ -317,6 +317,8 @@ private:
     AP_Int16 servo_min;
     AP_Int16 servo_max;
     AP_Int16 servo_trim;
+    AP_Int16 auto_trim_min;
+    AP_Int16 auto_trim_max;
     // reversal, following convention that 1 means reversed, 0 means normal
     AP_Int8 reversed;
     AP_Enum16<Function> function;
@@ -691,7 +693,6 @@ private:
     } functions[SRV_Channel::k_nr_aux_servo_functions];
 
     AP_Int8 auto_trim;
-    AP_Int8 auto_trim_limit;
     AP_Int16 default_rate;
     AP_Int8 dshot_rate;
     AP_Int8 dshot_esc_type;

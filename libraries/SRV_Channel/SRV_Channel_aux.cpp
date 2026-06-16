@@ -725,15 +725,34 @@ void SRV_Channels::adjust_trim(SRV_Channel::Function function, float v)
         if (c.servo_max <= c.servo_min) {
             continue;
         }
-        float trim_scaled = float(c.servo_trim - c.servo_min) / (c.servo_max - c.servo_min);
-        const float limit = constrain_float(_singleton->auto_trim_limit.get() * 0.01f, 0.0f, 0.5f);
-        if (change > 0 && trim_scaled < 0.5f + limit) {
+
+        const int16_t default_trim_min = c.servo_min + int16_t((c.servo_max - c.servo_min) * 0.4f);
+        const int16_t default_trim_max = c.servo_min + int16_t((c.servo_max - c.servo_min) * 0.6f);
+
+        // A value of 0  means "fall back to the default centred limit" for that bound.
+        int16_t trim_min = c.auto_trim_min.get() > 0 ? c.auto_trim_min.get() : default_trim_min;
+        int16_t trim_max = c.auto_trim_max.get() > 0 ? c.auto_trim_max.get() : default_trim_max;
+
+        // Auto-trim must never push SERVOn_TRIM outside the configured output
+        // range, regardless of the override values.
+        trim_min = constrain_int16(trim_min, c.servo_min, c.servo_max);
+        trim_max = constrain_int16(trim_max, c.servo_min, c.servo_max);
+
+        // Misconfiguration (min above max): fall back to the safe default window
+        // rather than allowing unbounded trim movement.
+        if (trim_min > trim_max) {
+            trim_min = default_trim_min;
+            trim_max = default_trim_max;
+        }
+
+        if (change > 0 && c.servo_trim < trim_max) {
             new_trim++;
-        } else if (change < 0 && trim_scaled > 0.5f - limit) {
+        } else if (change < 0 && c.servo_trim > trim_min) {
             new_trim--;
         } else {
             continue;
         }
+        new_trim = constrain_int16(new_trim, trim_min, trim_max);
         c.servo_trim.set(new_trim);
 
         trimmed_mask |= 1U<<i;
