@@ -6,8 +6,8 @@
  */
 const AP_Param::GroupInfo ModeFBWA::var_info[] = {
     // @Param: ROLL_LIM
-    // @DisplayName: BSA: FBWA roll limit
-    // @Description: Maximum roll angle in FBWA mode. Set to 0 to use the global ROLL_LIMIT_DEG parameter instead.
+    // @DisplayName: FBWA roll limit
+    // @Description: BSA: Maximum roll angle in FBWA mode. Set to 0 to use the global ROLL_LIMIT_DEG parameter instead.
     // @Range: 0 90
     // @Increment: 1
     // @Units: deg
@@ -15,8 +15,8 @@ const AP_Param::GroupInfo ModeFBWA::var_info[] = {
     AP_GROUPINFO("ROLL_LIM", 1, ModeFBWA, roll_limit, 0),
 
     // @Param: PTCH_MAX
-    // @DisplayName: BSA: FBWA maximum pitch up
-    // @Description: Maximum pitch-up angle in FBWA mode. Set to 0 to use the global PTCH_LIM_MAX_DEG parameter instead.
+    // @DisplayName: FBWA maximum pitch up
+    // @Description: BSA: Maximum pitch-up angle in FBWA mode. Set to 0 to use the global PTCH_LIM_MAX_DEG parameter instead.
     // @Range: 0 90
     // @Increment: 1
     // @Units: deg
@@ -24,8 +24,8 @@ const AP_Param::GroupInfo ModeFBWA::var_info[] = {
     AP_GROUPINFO("PTCH_MAX", 2, ModeFBWA, pitch_max, 0),
 
     // @Param: PTCH_MIN
-    // @DisplayName: BSA: FBWA maximum pitch down
-    // @Description: Maximum pitch-down angle in FBWA mode (enter as a negative value). Set to 0 to use the global PTCH_LIM_MIN_DEG parameter instead.
+    // @DisplayName: FBWA maximum pitch down
+    // @Description: BSA: Maximum pitch-down angle in FBWA mode (enter as a negative value). Set to 0 to use the global PTCH_LIM_MIN_DEG parameter instead.
     // @Range: -90 0
     // @Increment: 1
     // @Units: deg

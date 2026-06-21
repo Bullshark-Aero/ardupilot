@@ -172,8 +172,8 @@ const AP_Param::GroupInfo SRV_Channel::var_info[] = {
     AP_GROUPINFO("FUNCTION",  5, SRV_Channel, function, 0),
 
     // @Param{Plane}: ATRM_MIN
-    // @DisplayName: BSA: Auto-trim minimum PWM
-    // @Description: Lowest PWM value that SERVO_AUTO_TRIM is allowed to drive this output's SERVOn_TRIM down to. Set to 0 to use the default centred auto-trim lower limit (40% of the SERVOn_MIN to SERVOn_MAX range). This only constrains automatic trim updates; it does not change normal output scaling, manual limits, failsafe output, or SERVOn_MIN/MAX/TRIM.
+    // @DisplayName: Auto-trim minimum PWM
+    // @Description: BSA: Lowest PWM value that SERVO_AUTO_TRIM is allowed to drive this output's SERVOn_TRIM down to. Set to 0 to use the default centred auto-trim lower limit (40% of the SERVOn_MIN to SERVOn_MAX range). This only constrains automatic trim updates; it does not change normal output scaling, manual limits, failsafe output, or SERVOn_MIN/MAX/TRIM.
     // @Units: PWM
     // @Range: 0 2200
     // @Increment: 1
@@ -181,8 +181,8 @@ const AP_Param::GroupInfo SRV_Channel::var_info[] = {
     AP_GROUPINFO_FRAME("ATRM_MIN",  6, SRV_Channel, auto_trim_min, 0, AP_PARAM_FRAME_PLANE),
 
     // @Param{Plane}: ATRM_MAX
-    // @DisplayName: BSA: Auto-trim maximum PWM
-    // @Description: Highest PWM value that SERVO_AUTO_TRIM is allowed to drive this output's SERVOn_TRIM up to. Set to 0 to use the default centred auto-trim upper limit (60% of the SERVOn_MIN to SERVOn_MAX range). This only constrains automatic trim updates; it does not change normal output scaling, manual limits, failsafe output, or SERVOn_MIN/MAX/TRIM.
+    // @DisplayName: Auto-trim maximum PWM
+    // @Description: BSA: Highest PWM value that SERVO_AUTO_TRIM is allowed to drive this output's SERVOn_TRIM up to. Set to 0 to use the default centred auto-trim upper limit (60% of the SERVOn_MIN to SERVOn_MAX range). This only constrains automatic trim updates; it does not change normal output scaling, manual limits, failsafe output, or SERVOn_MIN/MAX/TRIM.
     // @Units: PWM
     // @Range: 0 2200
     // @Increment: 1

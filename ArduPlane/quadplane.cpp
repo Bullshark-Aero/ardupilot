@@ -573,15 +573,15 @@ const AP_Param::GroupInfo QuadPlane::var_info2[] = {
     AP_GROUPINFO("THRST_LOSS_OPT", 42, QuadPlane, thrust_loss.options, 0),
 
     // @Param: TRANS_DESC_EN
-    // @DisplayName: BSA: Transition descent assist enable
-    // @Description: Enables controlled descent during the AIRSPEED_WAIT phase of a forward transition. When enabled the VTOL motors command a descent once airspeed exceeds Q_TRANS_DESC_VS, subject to the AGL floor Q_TRANS_DESC_MN and optional altitude-loss cap Q_TRANS_DESC_MX. After transition completes the autopilot resumes normal altitude control. 0=disabled (existing behaviour), 1=enabled. Not applied to tiltrotors.
+    // @DisplayName: Transition descent assist enable
+    // @Description: BSA: Enables controlled descent during the AIRSPEED_WAIT phase of a forward transition. When enabled the VTOL motors command a descent once airspeed exceeds Q_TRANS_DESC_VS, subject to the AGL floor Q_TRANS_DESC_MN and optional altitude-loss cap Q_TRANS_DESC_MX. After transition completes the autopilot resumes normal altitude control. 0=disabled (existing behaviour), 1=enabled. Not applied to tiltrotors.
     // @Values: 0:Disabled,1:Enabled
     // @User: Standard
     AP_GROUPINFO("TRANS_DESC_EN", 43, QuadPlane, trans_desc.enabled, 0),
 
     // @Param: TRANS_DESC_VS
-    // @DisplayName: BSA: Transition descent airspeed threshold
-    // @Description: Airspeed (EAS) above which the transition descent assist begins commanding a descent. Below this speed the VTOL motors hold level.
+    // @DisplayName: Transition descent airspeed threshold
+    // @Description: BSA: Airspeed (EAS) above which the transition descent assist begins commanding a descent. Below this speed the VTOL motors hold level.
     // @Units: m/s
     // @Range: 0 20
     // @Increment: 0.5
@@ -589,8 +589,8 @@ const AP_Param::GroupInfo QuadPlane::var_info2[] = {
     AP_GROUPINFO("TRANS_DESC_VS", 44, QuadPlane, trans_desc.vstart, 3.0f),
 
     // @Param: TRANS_DESC_VZ
-    // @DisplayName: BSA: Transition descent maximum rate
-    // @Description: Maximum descent rate commanded to the VTOL Z controller during transition descent assist. Applied once airspeed exceeds Q_TRANS_DESC_VS.
+    // @DisplayName: Transition descent maximum rate
+    // @Description: BSA: Maximum descent rate commanded to the VTOL Z controller during transition descent assist. Applied once airspeed exceeds Q_TRANS_DESC_VS.
     // @Units: m/s
     // @Range: 0 5
     // @Increment: 0.1
@@ -598,8 +598,8 @@ const AP_Param::GroupInfo QuadPlane::var_info2[] = {
     AP_GROUPINFO("TRANS_DESC_VZ", 45, QuadPlane, trans_desc.vz_max, 0.5f),
 
     // @Param: TRANS_DESC_MX
-    // @DisplayName: BSA: Transition descent maximum altitude loss
-    // @Description: Maximum total altitude (m) the aircraft is allowed to lose during a single transition descent assist activation. Once this limit is reached descent stops and the aircraft holds altitude for the remainder of AIRSPEED_WAIT. Zero disables the cap.
+    // @DisplayName: Transition descent maximum altitude loss
+    // @Description: BSA: Maximum total altitude (m) the aircraft is allowed to lose during a single transition descent assist activation. Once this limit is reached descent stops and the aircraft holds altitude for the remainder of AIRSPEED_WAIT. Zero disables the cap.
     // @Units: m
     // @Range: 0 50
     // @Increment: 1
@@ -607,8 +607,8 @@ const AP_Param::GroupInfo QuadPlane::var_info2[] = {
     AP_GROUPINFO("TRANS_DESC_MX", 46, QuadPlane, trans_desc.alt_max, 0),
 
     // @Param: TRANS_DESC_MN
-    // @DisplayName: BSA: Transition descent minimum AGL
-    // @Description: Minimum height above ground (m AGL) required for transition descent assist to be active. If the aircraft is below this height the descent rate is forced to zero. Zero disables the check.
+    // @DisplayName: Transition descent minimum AGL
+    // @Description: BSA: Minimum height above ground (m AGL) required for transition descent assist to be active. If the aircraft is below this height the descent rate is forced to zero. Zero disables the check.
     // @Units: m
     // @Range: 0 100
     // @Increment: 1
